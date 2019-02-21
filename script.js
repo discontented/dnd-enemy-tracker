@@ -68,6 +68,7 @@ function createEnemyContainer(name, HP, AC, spellcaster, spellCasterLvl=5, legen
     enemyHeader.textContent = name;
 
     // assemble all elements to enemy container div
+    enemyCon.appendChild(genNavField());
     enemyCon.appendChild(enemyHeader);
     enemyCon.appendChild(genStatField(HP, AC));
     if (spellcaster === true) {
@@ -169,6 +170,26 @@ function genStatField(HP, AC) {
     field.appendChild(armor);
 
     return field;
+}
+
+function genNavField() {
+
+    let navField = document.createElement("nav");
+    navField.className = "enemyNav";
+    let closeIcon = document.createElement("i");
+    closeIcon.classList.add("fas", "fa-times");
+
+    function closeCard() {
+        let thisCard = navField.parentNode;
+        navField.parentNode.parentNode.removeChild(thisCard);
+    }
+
+    closeIcon.addEventListener("click", closeCard)
+    
+    navField.append(closeIcon);
+
+    return navField;
+
 }
 
 /**
