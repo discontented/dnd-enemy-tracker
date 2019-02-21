@@ -357,6 +357,8 @@ function genGenericField(legend, numberIcons, faIcon) {
     return genericField;
 }
 
+// init
+updateAllCheckboxes();
 
 // Create enemy boxes dynamically
 
