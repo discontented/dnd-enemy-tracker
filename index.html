@@ -14,11 +14,11 @@
     <title>Enemy Tracker</title>
 
     <script>
-    // refreshes every 10 seconds for testing
+        // refreshes every 10 seconds for testing
 
-    // setInterval(function() {
-    //     location.reload(true);
-    // }, 10000);
+        // setInterval(function () {
+        //     location.reload(true);
+        // }, 5000);
     </script>
 
 </head>
@@ -27,39 +27,40 @@
     <nav>
         <form method="get" id="options">
 
-
             <fieldset id="statsForm">
                 <legend>Stats</legend>
-                <label>Name
-                    <input type="text" name="enemyName" />
-                </label>
 
+                <div>
+                    <label for="enemyName">Name</label>
+                    <input type="text" name="enemyName" id="enemyName" />
+                </div>
+                <div>
+                    <label for="HP">HP</label>
+                    <input type="number" name="HP" id="HP" />
+                </div>
+                <div>
+                    <label for="AC">AC</label>
+                    <input type="number" name="AC" id="AC" />
+                </div>
 
-                <label>HP
-                    <input type="number" name="HP" />
-                </label>
-
-                <label>AC
-                    <input type="number" name="AC" />
-                </label>
             </fieldset>
 
             <fieldset id="optionsForm">
                 <legend>Options</legend>
 
-                <div>
-                    <label>
+                <div class="opSubsection">
+                    <label class="opSubLabel">
                         <i class="fas fa-hat-wizard"></i>
                         <input type="checkbox" name="spellcasterCheck" checked>
                     </label>
 
-                    <label for="spellcasterLevel">Spellcaster Level</label>
-                        <select name="spellcasterLevel" id="spellcasterLevel">
-                            <script>
+                    <label for="spellcasterLevel" class="opSubText">Spellcaster Level</label>
+                    <select name="spellcasterLevel" id="spellcasterLevel">
+                        <script>
 
                             let spellCasterSelect = document.querySelector("select[name='spellcasterLevel']");
 
-                            for(let i = 1; i <= 20; i++) {
+                            for (let i = 1; i <= 20; i++) {
                                 let casterLevelOption = document.createElement("option");
                                 casterLevelOption.setAttribute("value", i.toString());
 
@@ -69,28 +70,28 @@
 
                                 spellCasterSelect.appendChild(casterLevelOption);
                             }
-                            </script>
-                        </select>
+                        </script>
+                    </select>
                 </div>
 
-                <div>
-                    <label>
+                <div class="opSubsection">
+                    <label class="opSubLabel">
                         <i class="fas fa-dragon"></i>
                         <input type="checkbox" name="legendaryCheck">
                     </label>
 
-                    <label for="legendaryValue">Number of Legendary Actions</label>
-                        <input type="number" id="legendaryValue" name="legendaryValue" value="3">
-                    
+                    <label for="legendaryValue" class="opSubText">Number of Legendary Actions</label>
+                    <input type="number" id="legendaryValue" name="legendaryValue" value="3">
+
                 </div>
 
-                <div>
-                    <label>
+                <div class="opSubsection">
+                    <label class="opSubLabel">
                         <i class="fas fa-home"></i>
                         <input type="checkbox" name="lairCheck">
                     </label>
 
-                    <label for="lairValue">Number of Lair Actions</label>
+                    <label for="lairValue" class="opSubText">Number of Lair Actions</label>
                     <input type="number" id="lairValue" name="lairValue" value="1">
 
                 </div>
