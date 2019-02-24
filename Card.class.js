@@ -1,14 +1,7 @@
-function Card() {
-    this.Enemy = new Enemy();
+function Card(Enemy) {
+    this.Enemy = Enemy;
 
-    var body = document.getElementById("container");
-
-    // test code
-    var monsterForm = document.getElementById("options");
-
-    monsterForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        let monsterForm = document.getElementById("options");
+    this.formSubmission = function (monsterForm) {
 
         let monEls = monsterForm.elements;
 
@@ -16,7 +9,7 @@ function Card() {
         this.Enemy.name = monEls["enemyName"].value;
         this.Enemy.HP = monEls["HP"].value;
         this.Enemy.AC = monEls["AC"].value;
-        if (monEls["spellcasterChecked"]) {
+        if (monEls["spellcasterCheck"].checked) {
             this.Enemy.spellCasterLvl = parseInt(monEls["spellcasterLevel"].value);
         }
         if (monEls["legendaryCheck"].checked) {
@@ -26,10 +19,8 @@ function Card() {
             this.Enemy.lairActions = parseInt(monEls["lairValue"].value);
         }
 
-        body.appendChild(this.createEnemyContainer());
-
-        this.updateAllCheckboxes();
-    });
+        return this.createEnemyContainer();
+    }
 
     /**
     * Updates all checkboxes that may have been added from initialization
@@ -150,9 +141,8 @@ function Card() {
         /**
          * 
          * @param {string} inputName Name given to field that will be its `name` attribute and container class
-         * @param {*} inputDefaultVal Default value within input field
          */
-        function adjustableField(inputName, inputDefaultVal) {
+        function adjustableField(inputName) {
 
             // Create container
             let adjustCon = document.createElement("div");
@@ -166,7 +156,7 @@ function Card() {
             // Create input
             let fieldInput = document.createElement("input");
             fieldInput.setAttribute("name", inputName);
-            fieldInput.setAttribute("value", inputDefaultVal);
+
 
             fieldLabel.appendChild(fieldInput);
             adjustCon.appendChild(fieldLabel);
@@ -192,10 +182,12 @@ function Card() {
 
             function incrementHP() {
                 fieldInput.value++;
+                this.Enemy.HP++;
             }
 
             function decrementHP() {
                 fieldInput.value--;
+                this.Enemy.HP--;
             }
 
             // Increment/Decrement container
@@ -214,8 +206,8 @@ function Card() {
             return adjustCon;
         }
 
-        let health = adjustableField("HP", 10);
-        let armor = adjustableField("AC", 10);
+        let health = adjustableField("HP");
+        let armor = adjustableField("AC");
 
         // DOM construction
         field.appendChild(health);

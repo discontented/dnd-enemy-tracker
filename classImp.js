@@ -1,6 +1,20 @@
-
 var enemy1 = new Enemy();
-var card1 = new Card();
+var card1 = new Card(enemy1);
+var enemies = new Array();
+
+var body = document.getElementById("container");
+
+var pageForm = document.getElementById("options");
+
+pageForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var formEnemy = new Enemy();
+    var freshCard = new Card(formEnemy);
+    body.appendChild(freshCard.formSubmission(pageForm));
+    updateAllCheckboxes();
+    
+    enemies.push(formEnemy);
+});
 
 updateAllCheckboxes();
 
