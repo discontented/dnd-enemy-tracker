@@ -19,7 +19,6 @@ function updateAllCheckboxes() {
                 checkboxes[i].parentNode.classList.remove("checked");
             }
         });
-
     }
 }
 
@@ -60,7 +59,7 @@ function generateField(fieldName, clName) {
  * @param {boolean} lair true/false if creature has lair actions
  * @returns A div element with an h1 tag containing the name
  */
-function createEnemyContainer(name, HP, AC, spellcaster, spellCasterLvl=5, legendary, legendaryActions=3, lair, lairActions=1) {
+function createEnemyContainer(name, HP, AC, spellcaster, spellCasterLvl = 5, legendary, legendaryActions = 3, lair, lairActions = 1) {
     let enemyCon = document.createElement("div");
     enemyCon.className = "enemy";
 
@@ -174,7 +173,7 @@ function genNavField(name) {
 
     let enemyHeader = document.createElement("h1");
     enemyHeader.textContent = name;
-    
+
     let closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-times");
 
@@ -184,7 +183,7 @@ function genNavField(name) {
     }
 
     closeIcon.addEventListener("click", closeCard)
-    
+
     navField.append(enemyHeader);
     navField.append(closeIcon);
 
@@ -409,15 +408,15 @@ monsterForm.addEventListener("submit", (e) => {
     let lairActions = 1;
 
     if (spellcaster === true) {
-        
+
         spellCasterLvl = parseInt(monEls["spellcasterLevel"].value);
     }
-    if(legendary === true) {
-        
+    if (legendary === true) {
+
         legendaryActions = parseInt(monEls["legendaryValue"].value);
     }
-    if(lair === true) {
-        
+    if (lair === true) {
+
         lairActions = parseInt(monEls["lairValue"].value);
     }
 
