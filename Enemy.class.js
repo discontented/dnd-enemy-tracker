@@ -1,10 +1,15 @@
-function Enemy() {
+function Enemy(HP, AC) {
     //constructors
-    this.HP = undefined;
-    this.AC = undefined;
+    this.HP = HP;
+    this.AC = AC;
     this.name = "";
     this.spellCasterLvl = undefined;
-    this.spellSlots = undefined;
+
     this.legendaryActions = undefined;
     this.lairActions = undefined;
+
+    this.setSpellCaster = function(lvl) {
+        this.spellCasterLvl = lvl;
+        this.spellSlots = SpellLevel[this.spellCasterLvl]
+    }
 }

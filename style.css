@@ -160,7 +160,7 @@ NAV BAR IN ENEMY CARD
 .enemyNav {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-content: center;
     align-items: center;
 }

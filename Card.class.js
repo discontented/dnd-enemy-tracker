@@ -1,7 +1,6 @@
 function Card(Enemy) {
     this.Enemy = Enemy;
 
-    
     /**
      * @param  {DOMElement} appendContainer
      */
@@ -79,7 +78,7 @@ function Card(Enemy) {
         enemyCon.className = "enemy";
 
         // assemble all elements to enemy container div
-        enemyCon.appendChild(this.genNavField(this.Enemy.name));
+        enemyCon.appendChild(this.genNavField());
         enemyCon.appendChild(this.genStatField(this.Enemy.HP, this.Enemy.AC));
         if (this.Enemy.spellCasterLvl !== undefined) {
             enemyCon.appendChild(this.genSpellSlotField(this.Enemy.spellCasterLvl));
@@ -231,32 +230,6 @@ function Card(Enemy) {
      * @param {int} spellCasterLvl Spell caster level
      */
     this.genSpellSlotField = function () {
-
-        let SpellLevel = {
-            "spellLvl": {
-                1: [2],
-                2: [3],
-                3: [4, 2],
-                4: [4, 3],
-                5: [4, 3, 2],
-                6: [4, 3, 3],
-                7: [4, 3, 3, 1],
-                8: [4, 3, 3, 2],
-                9: [4, 3, 3, 3, 1],
-                10: [4, 3, 3, 3, 2],
-                11: [4, 3, 3, 3, 2, 1],
-                12: [4, 3, 3, 3, 2, 1],
-                13: [4, 3, 3, 3, 2, 1, 1],
-                14: [4, 3, 3, 3, 2, 1, 1],
-                15: [4, 3, 3, 3, 2, 1, 1, 1],
-                16: [4, 3, 3, 3, 2, 1, 1, 1],
-                17: [4, 3, 3, 3, 2, 1, 1, 1, 1],
-                18: [4, 3, 3, 3, 3, 1, 1, 1, 1],
-                19: [4, 3, 3, 3, 3, 2, 1, 1, 1],
-                20: [4, 3, 3, 3, 3, 2, 2, 1, 1]
-            }
-        }
-
         // Array for spellSlots based on level to make it easier to work with than an object
         let spellSlots = SpellLevel.spellLvl[this.Enemy.spellCasterLvl];
 
@@ -271,6 +244,7 @@ function Card(Enemy) {
             lvlLabel.appendChild(lvlLabelTxt);
 
             let spellSlotCheckboxes = createSpellSlotRow(spellSlots[i]);
+            this.Enemy.spellSlots = spellSlots[i];
             spellLvlCon.appendChild(lvlLabel);
             spellLvlCon.appendChild(spellSlotCheckboxes);
 
@@ -356,7 +330,8 @@ function Card(Enemy) {
             new Condition("Invisible", "fa-ghost"),
             new Condition("Paralyzed", "fa-bolt"),
             new Condition("Petrified", "fa-diagnoses"),
-            new Condition("Poisoned", "fa-vial")
+            new Condition("Poisoned", "fa-vial"),
+            new Condition("Mage Armor", "fa-shield-alt")
         ];
 
         for (let i = 0; i < conditions.length; i++) {

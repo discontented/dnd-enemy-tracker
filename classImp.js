@@ -19,14 +19,6 @@ pageForm.addEventListener("submit", (e) => {
 
 updateAllCheckboxes();
 
-// Writes enemies stored as cookies to page
-var storedEnemies = JSON.parse(localStorage.getItem("storedEnemies"));
-
-for(let i = 0;i < storedEnemies.length; i++) {
-    let card = new Card(storedEnemies[i]);
-    card.drawCard(body);
-}
-
 // Saving state
 
 /**
@@ -57,3 +49,47 @@ var clearMemory = document.querySelector("button[value='Clear Memory']")
 clearMemory.addEventListener("click", function() {
     localStorage.clear();
 })
+
+// Today's session
+var slavers = new Array();
+
+slavers[0] = new Enemy(40, 15);
+slavers[0].name = "Robert";
+
+slavers[1] = new Enemy(40, 15);
+slavers[1].name = "Daniel";
+
+slavers[2] = new Enemy(34, 15);
+slavers[2].name = "Job";
+
+slavers[3] = new Enemy(40, 15);
+slavers[3].name = "Nathaniel";
+
+for(let i = 0; i < slavers.length; i++) {
+    slavers[i].setSpellCaster(9);
+    let newCard = new Card(slavers[i]);
+    newCard.drawCard(body);
+}
+
+var constructs = new Array();
+
+constructs[0] = new Enemy(33, 16);
+constructs[1] = new Enemy(33, 16);
+constructs[2] = new Enemy(33, 16);
+
+for(let i = 0; i < constructs.length; i++) {
+    constructs[i].name = `Construct ${i+1}`;
+    let newCard = new Card(constructs[i]);
+    newCard.drawCard(body);
+}
+
+var Vhalak = new Enemy(52, 14);
+Vhalak.name = "Vhalak";
+var VhalakCard = new Card(Vhalak);
+VhalakCard.drawCard(body);
+
+var Nezznar = new Enemy(99, 15);
+Nezznar.name = "Nezznar";
+Nezznar.setSpellCaster(16);
+var NezznarCard = new Card(Nezznar)
+NezznarCard.drawCard(body);
