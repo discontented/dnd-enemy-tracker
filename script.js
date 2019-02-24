@@ -64,12 +64,8 @@ function createEnemyContainer(name, HP, AC, spellcaster, spellCasterLvl=5, legen
     let enemyCon = document.createElement("div");
     enemyCon.className = "enemy";
 
-    let enemyHeader = document.createElement("h1");
-    enemyHeader.textContent = name;
-
     // assemble all elements to enemy container div
-    enemyCon.appendChild(genNavField());
-    enemyCon.appendChild(enemyHeader);
+    enemyCon.appendChild(genNavField(name));
     enemyCon.appendChild(genStatField(HP, AC));
     if (spellcaster === true) {
         enemyCon.appendChild(genSpellSlotField(spellCasterLvl));
@@ -172,10 +168,13 @@ function genStatField(HP, AC) {
     return field;
 }
 
-function genNavField() {
-
+function genNavField(name) {
     let navField = document.createElement("nav");
     navField.className = "enemyNav";
+
+    let enemyHeader = document.createElement("h1");
+    enemyHeader.textContent = name;
+    
     let closeIcon = document.createElement("i");
     closeIcon.classList.add("fas", "fa-times");
 
@@ -186,6 +185,7 @@ function genNavField() {
 
     closeIcon.addEventListener("click", closeCard)
     
+    navField.append(enemyHeader);
     navField.append(closeIcon);
 
     return navField;
@@ -378,6 +378,9 @@ function genGenericField(legend, numberIcons, faIcon) {
     return genericField;
 }
 
+// Storage
+localStorage.setItem
+
 // init
 updateAllCheckboxes();
 
@@ -386,7 +389,6 @@ updateAllCheckboxes();
 var body = document.getElementById("container");
 
 // test code
-
 let monsterForm = document.getElementById("options");
 
 monsterForm.addEventListener("submit", (e) => {

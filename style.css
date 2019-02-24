@@ -2,9 +2,9 @@
 GLOBALS
 */
 
-
 body {
     background-color: #090909;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -25,10 +25,33 @@ legend {
 
 i {
     user-select: none;
+    cursor: pointer;
 }
 
 .checked {
     color: #822000;
+}
+
+button, input[type="submit"] {
+    background-color: #822000;
+    color: white;
+    border: none;
+    margin: 1em;
+    height: 2em;
+    border: none;
+    cursor: pointer;
+    /* border-radius: 15px; */
+    /* box-shadow: 0 9px #999; */
+}
+
+button:hover, input[type="submit"]:hover {
+    box-shadow: 0 5px 5px #999;
+}
+
+button:active, input[type="submit"]:active {
+    /* background-color: #3e8e41; */
+    box-shadow: 0 1px 5px #666;
+    transform: translateY(4px);
 }
 
 /*
@@ -101,7 +124,7 @@ OPTIONS SUBSECTION
 
 #add {
     width: 25%;
-    margin: 0 auto;
+    margin: 1em auto 0;
 }
 
 /*
@@ -162,19 +185,19 @@ STATS FIELD
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: .5em 0;
 }
 
 .stats div label , .stats div span {
     flex: 1 0 48%;
-    /* flex: 1 0 25%; */
     display: flex;
     justify-content: space-around;
 }
 
 .stats input {
-    /* width: 10%; */
     width: 40%;
+    height: 2em;
 }
 
 .stats button {
