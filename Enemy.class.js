@@ -4,6 +4,7 @@ function Enemy() {
     this.AC = undefined;
     this.name = "";
     this.spellCasterLvl = undefined;
+    this.spellSlots = undefined;
     this.legendaryActions = undefined;
     this.lairActions = undefined;
 }

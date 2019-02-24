@@ -14,9 +14,18 @@ pageForm.addEventListener("submit", (e) => {
     updateAllCheckboxes();
     
     enemies.push(formEnemy);
+    localStorage.setItem("storedEnemies", JSON.stringify(enemies));
 });
 
 updateAllCheckboxes();
+
+// Writes enemies stored as cookies to page
+var storedEnemies = JSON.parse(localStorage.getItem("storedEnemies"));
+
+for(let i = 0;i < storedEnemies.length; i++) {
+    let card = new Card(storedEnemies[i]);
+    card.drawCard(body);
+}
 
 // Saving state
 
@@ -43,3 +52,8 @@ function updateAllCheckboxes() {
         });
     }
 }
+
+var clearMemory = document.querySelector("button[value='Clear Memory']")
+clearMemory.addEventListener("click", function() {
+    localStorage.clear();
+})

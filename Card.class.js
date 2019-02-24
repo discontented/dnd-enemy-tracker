@@ -1,6 +1,15 @@
 function Card(Enemy) {
     this.Enemy = Enemy;
 
+    
+    /**
+     * @param  {DOMElement} appendContainer
+     */
+    this.drawCard = function(appendContainer) {
+        appendContainer.appendChild(this.createEnemyContainer());
+        this.updateAllCheckboxes();
+    }
+
     this.formSubmission = function (monsterForm) {
 
         let monEls = monsterForm.elements;
@@ -142,7 +151,7 @@ function Card(Enemy) {
          * 
          * @param {string} inputName Name given to field that will be its `name` attribute and container class
          */
-        function adjustableField(inputName) {
+        function adjustableField(inputName, inputValue) {
 
             // Create container
             let adjustCon = document.createElement("div");
@@ -156,6 +165,7 @@ function Card(Enemy) {
             // Create input
             let fieldInput = document.createElement("input");
             fieldInput.setAttribute("name", inputName);
+            fieldInput.setAttribute("value", inputValue);
 
 
             fieldLabel.appendChild(fieldInput);
@@ -206,8 +216,8 @@ function Card(Enemy) {
             return adjustCon;
         }
 
-        let health = adjustableField("HP");
-        let armor = adjustableField("AC");
+        let health = adjustableField("HP", this.Enemy.HP);
+        let armor = adjustableField("AC", this.Enemy.AC);
 
         // DOM construction
         field.appendChild(health);
