@@ -54,32 +54,11 @@ clearMemory.addEventListener("click", function() {
 var slavers = new Array();
 
 slavers[0] = new Enemy(40, 15);
-slavers[0].name = "Robert";
-
-slavers[1] = new Enemy(40, 15);
-slavers[1].name = "Daniel";
-
-slavers[2] = new Enemy(34, 15);
-slavers[2].name = "Job";
-
-slavers[3] = new Enemy(40, 15);
-slavers[3].name = "Nathaniel";
+slavers[0].name = "Nathaniel";
 
 for(let i = 0; i < slavers.length; i++) {
     slavers[i].setSpellCaster(9);
     let newCard = new Card(slavers[i]);
-    newCard.drawCard(body);
-}
-
-var constructs = new Array();
-
-constructs[0] = new Enemy(33, 16);
-constructs[1] = new Enemy(33, 16);
-constructs[2] = new Enemy(33, 16);
-
-for(let i = 0; i < constructs.length; i++) {
-    constructs[i].name = `Construct ${i+1}`;
-    let newCard = new Card(constructs[i]);
     newCard.drawCard(body);
 }
 
@@ -93,3 +72,22 @@ Nezznar.name = "Nezznar";
 Nezznar.setSpellCaster(16);
 var NezznarCard = new Card(Nezznar)
 NezznarCard.drawCard(body);
+
+var Gundren = new Enemy(75, 16);
+Gundren.name = "Gundren";
+var GundrenCard = new Card(Gundren);
+GundrenCard.drawCard(body);
+
+var soldiers = new Array();
+
+for(let i = 0; i < 3; i++) {
+    soldiers[i] = new Enemy(27, 16);
+    soldiers[i].name = `Soldier ${i + 1}`
+    var soldierCard = new Card(soldiers[i]);
+    soldierCard.drawCard(body);
+}
+
+var Champ = new Enemy(18, 143);
+Champ.name = "Tristan";
+var champCard = new Card(Champ);
+champCard.drawCard(body);
