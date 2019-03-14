@@ -51,27 +51,11 @@ clearMemory.addEventListener("click", function() {
 })
 
 // Today's session
-var slavers = new Array();
-
-slavers[0] = new Enemy(40, 15);
-slavers[0].name = "Nathaniel";
-
-for(let i = 0; i < slavers.length; i++) {
-    slavers[i].setSpellCaster(9);
-    let newCard = new Card(slavers[i]);
-    newCard.drawCard(body);
-}
 
 var Vhalak = new Enemy(52, 14);
 Vhalak.name = "Vhalak";
 var VhalakCard = new Card(Vhalak);
 VhalakCard.drawCard(body);
-
-var Nezznar = new Enemy(99, 15);
-Nezznar.name = "Nezznar";
-Nezznar.setSpellCaster(16);
-var NezznarCard = new Card(Nezznar)
-NezznarCard.drawCard(body);
 
 var Gundren = new Enemy(75, 16);
 Gundren.name = "Gundren";
@@ -87,7 +71,7 @@ for(let i = 0; i < 3; i++) {
     soldierCard.drawCard(body);
 }
 
-var Champ = new Enemy(18, 143);
+var Champ = new Enemy(18, 14);
 Champ.name = "Tristan";
 var champCard = new Card(Champ);
 champCard.drawCard(body);
