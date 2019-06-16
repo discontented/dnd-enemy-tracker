@@ -1,5 +1,3 @@
-var enemy1 = new Enemy();
-var card1 = new Card(enemy1);
 var enemies = new Array();
 
 var body = document.getElementById("container");
@@ -49,6 +47,17 @@ var clearMemory = document.querySelector("button[value='Clear Memory']")
 clearMemory.addEventListener("click", function() {
     localStorage.clear();
 })
+
+// load from local storage
+if (localStorage.getItem("storedEnemies") !== null) {
+    var storedEnemies = JSON.parse(localStorage.getItem("storedEnemies"));
+
+    for (let i = 0; i < storedEnemies.length; i++) {
+        let enemy = storedEnemies[i];
+        let card = new Card(enemy);
+        card.drawCard(body);
+    }
+}
 
 // Today's session
 
